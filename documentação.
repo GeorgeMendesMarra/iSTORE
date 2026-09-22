@@ -1,0 +1,36 @@
+Documentação do Projeto: iStore | Premium
+1. Visão Geral
+A iStore | Premium é uma aplicação web voltada para a exibição, busca e gestão simplificada de catálogo de smartphones (novos e seminovos). A plataforma adota a estética visual moderna e minimalista inspirada no design da Apple, integrando uma vitrine interativa para o cliente, página individual de especificações com redirecionamento direto para atendimento via WhatsApp e um painel administrativo protegido por senha para controle de estoque.
+2. Tecnologias, Ferramentas e Ecossistema
+| Categoria | Ferramenta / Recurso | Finalidade no Projeto |
+|---|---|---|
+| Editor de Código | Visual Studio Code (VS Code) | Ambiente de desenvolvimento integrado (IDE) utilizado para estruturação, edição, depuração e organização de todos os arquivos do projeto. |
+| Inteligência Artificial | Google Gemini | Assistência técnica e copiloto de programação no desenvolvimento do código, criação dos algoritmos em JavaScript (como a geração matemática de ondas SVG e filtros dinâmicos) e estilização da interface em CSS. |
+| Hospedagem & Deploy | GitHub & GitHub Pages | Controle de versão do repositório e publicação direta do projeto na web de forma estável, acessível e contínua. |
+| Linguagens Base | HTML5, CSS3 e JavaScript (Vanilla) | Estruturação semântica, estilização responsiva personalizada (sem bibliotecas externas pesadas) e programação lógica client-side. |
+3. Funcionalidades Principais
+Experiência do Usuário (Front-end Vitrine)
+ * Design Dark Mode & Fundo Dinâmico: Fundo composto por ondas senoidais animadas geradas via script SVG procedural (generateSeamlessWave).
+ * Barra de Navegação Inteligente: Transição automática de busca para o cabeçalho fixo durante a rolagem da página (scroll observer).
+ * Filtros e Pesquisa em Tempo Real: Campo de busca unificado e botões de segmentação instantânea por categorias (Todos, Novos e Seminovos).
+ * Página de Detalhes Dedicada: Apresentação técnica do produto, exibindo garantia, ficha descritiva, condição e integridade da bateria (específica para modelos seminovos).
+ * Integração Comercial via WhatsApp: Botão com chamada direta de ação (CTA) para o canal de atendimento e fechamento da venda.
+Gestão e Back-office (Painel Administrativo)
+ * Autenticação Simples: Camada de acesso restrito via modal para impedir edições não autorizadas.
+ * Cadastro Dinâmico de Produtos: Suporte ao upload de imagens locais (processadas em tempo real como Base64 via FileReader API) sem necessidade de backend intermediário.
+ * Campos Condicionais: Ativação automática do campo de porcentagem de saúde da bateria caso a categoria selecionada seja Seminovo.
+ * Persistência Local (LocalStorage): Gravação, edição e exclusão de itens salvas na memória local do navegador sob a chave istore_data, mantendo os dados atualizados mesmo após recarregar a página.
+4. Estrutura do Arquivo
+O projeto adota uma arquitetura em arquivo único (Single Page Application - SPA), integrando estrutura, estilo e lógica em um único documento para facilitar o deploy estático no GitHub Pages:
+ * Linhas 1 a 150 (HTML Head & CSS): Variáveis de cores raiz (:root), regras de flexbox/grid responsivas, keyframes de animação e formatação visual dos modais e cards.
+ * Linhas 151 a 230 (Estrutura do DOM): Marcação do fundo animado, menu de navegação, container de vitrine principal, modal de detalhes do produto e modais administrativos/login.
+ * Linhas 231 até o final (JavaScript):
+   * aparelhosIniciais: Catálogo padrão com dados de fallback.
+   * filtrarProdutos() e syncSearch(): Motor de busca e renderização de cards no DOM.
+   * verAparelho() e irParaHome(): Roteamento visual interno entre vitrine e visualização individual.
+   * salvarProduto() e removerProduto(): Operações de CRUD integradas ao localStorage.
+   * generateSeamlessWave(): Cálculo trigonométrico (y = \text{yOffset} + A \cdot \sin(kx)) para gerar as ondas fluídas no plano de fundo.
+5. Publicação e Manutenção (GitHub Pages)
+ * Repositório: Código-fonte enviado ao GitHub contendo o arquivo index.html na branch principal (main ou master).
+ * Deploy: Ativação da funcionalidade GitHub Pages nas configurações do repositório (Settings > Pages > Branch: main / root).
+ * Distribuição: O site permanece disponível publicamente via URL HTTPS fornecida pelo próprio GitHub, sem custos de servidor.
